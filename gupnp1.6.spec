@@ -86,7 +86,6 @@ Statyczne biblioteki gupnp.
 Summary:	gupnp API documentation
 Summary(pl.UTF-8):	Dokumentacja API gupnp
 Group:		Documentation
-Requires:	gtk-doc-common
 BuildArch:	noarch
 
 %description apidocs
