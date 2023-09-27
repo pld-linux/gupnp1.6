@@ -30,7 +30,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.029
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
@@ -126,9 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 %if %{with apidocs}
-# FIXME: where to package gi-docgen generated docs?
-install -d $RPM_BUILD_ROOT%{_gtkdocdir}
-%{__mv} $RPM_BUILD_ROOT%{_docdir}/gupnp-1.6 $RPM_BUILD_ROOT%{_gtkdocdir}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/gupnp-1.6 $RPM_BUILD_ROOT%{_gidocdir}
 %endif
 
 %clean
@@ -160,7 +159,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/gupnp-1.6
+%{_gidocdir}/gupnp-1.6
 %endif
 
 %if %{with vala}
