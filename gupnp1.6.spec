@@ -1,7 +1,8 @@
 #
 # Conditional build:
-%bcond_without	apidocs	# gi-docgen based API documentation
-%bcond_without	vala	# Vala API
+%bcond_without	apidocs		# gi-docgen based API documentation
+%bcond_without	vala		# Vala API
+%bcond_without	static_libs	# static library
 
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
@@ -114,6 +115,7 @@ API języka Vala dla biblioteki gupnp.
 
 %build
 %meson build \
+	%{!?with_static_libs:--default-library=shared} \
 	-Dcontext_manager=network-manager \
 	%{?with_apidocs:-Dgtk_doc=true}
 
@@ -151,9 +153,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/gupnp-1.6
 %{_pkgconfigdir}/gupnp-1.6.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgupnp-1.6.a
+%endif
 
 %if %{with apidocs}
 %files apidocs
