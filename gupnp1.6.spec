@@ -8,12 +8,12 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp1.6
 # note: 1.6.x is stable, 1.7.x unstable
-Version:	1.6.6
+Version:	1.6.7
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp/1.6/gupnp-%{version}.tar.xz
-# Source0-md5:	85b5b797963f0616d06f66829c428ff3
+# Source0-md5:	4277a100e9c909069e64086d20605bb5
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
