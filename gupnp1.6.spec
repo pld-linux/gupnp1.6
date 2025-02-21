@@ -8,12 +8,12 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp1.6
 # note: 1.6.x is stable, 1.7.x unstable
-Version:	1.6.7
+Version:	1.6.8
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp/1.6/gupnp-%{version}.tar.xz
-# Source0-md5:	4277a100e9c909069e64086d20605bb5
+# Source0-md5:	6152851a7e731f45eaf0b77263567c23
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
@@ -31,7 +31,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 2.029
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
@@ -114,17 +114,17 @@ API języka Vala dla biblioteki gupnp.
 %setup -q -n gupnp-%{version}
 
 %build
-%meson build \
+%meson \
 	%{!?with_static_libs:--default-library=shared} \
 	-Dcontext_manager=network-manager \
 	%{?with_apidocs:-Dgtk_doc=true}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{with apidocs}
 install -d $RPM_BUILD_ROOT%{_gidocdir}
