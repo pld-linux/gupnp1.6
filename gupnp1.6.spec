@@ -8,12 +8,12 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp1.6
 # note: 1.6.x is stable, 1.7.x unstable
-Version:	1.6.9
+Version:	1.6.10
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp/1.6/gupnp-%{version}.tar.xz
-# Source0-md5:	b6ff81a7eba6d614b5a745dcfff9bc66
+# Source0-md5:	8708d90a27fa1c666dd6cc90570b8d38
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
@@ -21,7 +21,7 @@ BuildRequires:	docbook-dtd45-xml
 BuildRequires:	docbook-style-xsl
 BuildRequires:	glib2-devel >= 1:2.70
 BuildRequires:	gobject-introspection-devel >= 1.36.0
-BuildRequires:	gssdp1.6-devel >= 1.6.2
+BuildRequires:	gssdp1.6-devel >= 1.6.5
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	libsoup3-devel >= 3.0
 BuildRequires:	libxml2-devel >= 1:2.6.30
@@ -35,10 +35,10 @@ BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
-%{?with_vala:BuildRequires:	vala-gssdp1.6 >= 1.6.2}
+%{?with_vala:BuildRequires:	vala-gssdp1.6 >= 1.6.5}
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.70
-Requires:	gssdp1.6 >= 1.6.2
+Requires:	gssdp1.6 >= 1.6.5
 Requires:	libsoup3 >= 3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,7 +59,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.70
-Requires:	gssdp1.6-devel >= 1.6.2
+Requires:	gssdp1.6-devel >= 1.6.5
 Requires:	libsoup3-devel >= 3.0
 Requires:	libxml2-devel >= 1:2.6.30
 
@@ -101,7 +101,7 @@ Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.20
-Requires:	vala-gssdp1.6 >= 1.6.2
+Requires:	vala-gssdp1.6 >= 1.6.5
 BuildArch:	noarch
 
 %description -n vala-gupnp1.6
@@ -141,14 +141,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README.md
 %attr(755,root,root) %{_bindir}/gupnp-binding-tool-1.6
-%attr(755,root,root) %{_libdir}/libgupnp-1.6.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.6.so.0
+%{_libdir}/libgupnp-1.6.so.*.*.*
+%ghost %{_libdir}/libgupnp-1.6.so.0
 %{_libdir}/girepository-1.0/GUPnP-1.6.typelib
 %{_mandir}/man1/gupnp-binding-tool-1.6.1*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgupnp-1.6.so
+%{_libdir}/libgupnp-1.6.so
 %{_datadir}/gir-1.0/GUPnP-1.6.gir
 %{_includedir}/gupnp-1.6
 %{_pkgconfigdir}/gupnp-1.6.pc
